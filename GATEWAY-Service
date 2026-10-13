@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+          - id: servicio1
+            uri: lb://SALUDO-SERVICE
+            predicates:
+            - path=/say/saludo/**
+          - id: servicio2
+            uri: lb://REST-EMPLOYEE
+            predicates:
+            - path=/api/employee/**
+server:
+  port: 8082
